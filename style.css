@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    min-height: 100vh;
+    background: linear-gradient(rgb(83, 6, 6), #111);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    width: 80vw;
+    max-width: 1200px;
+}
+
+.card {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: rgba(0, 0, 0, 0.25) url('imageBefore.png') no-repeat center center;
+    background-size: cover;
+    border-radius: 25px;
+    position: relative;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: var(--y);
+    left: var(--x);
+    transform: translate(-50%, -50%);
+    background: radial-gradient(var(--clr), transparent, transparent);
+    width: 300px;
+    height: 300px;
+    opacity: 0;
+    transition: 0.5s, top 0s, left 0s;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url(imageAfter.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 25px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    padding-bottom: 20px;
+}
+
+.btn {
+    font-size: 4vw;
+    max-width: 200px;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background: #691010;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.labels {
+    text-align: center;
+    position: relative;
+    width: 100%;
+}
+
+.label {
+    font-size: 7vw;
+    color: #ff0000;
+}
+
+.small {
+    font-size: 3.5vw;
+    color: #861d1d;
+}
+
+
+
+
+.snowflakes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.snowflake {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    animation: snowfall linear infinite;
+}
+
+@keyframes snowfall {
+    0% {
+        transform: translateY(-100px);
+    }
+    100% {
+        transform: translateY(calc(100vh + 100px));
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .label {
+        font-size: 4vw;
+    }
+    .small {
+        font-size: 2vw;
+    }
+    .btn {
+        font-size: 2vw;
+    }
+
+}
